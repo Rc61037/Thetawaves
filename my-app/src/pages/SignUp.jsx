@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import AuthLayout from '../components/AuthLayout';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     username: '',
@@ -14,38 +15,45 @@ const SignUp = () => {
   };
 
   return (
-    <AuthLayout>
-      <h2 className="text-2xl font-['NanumGothic'] text-[#4B1535] mb-6">please sign up</h2>
-      <form onSubmit={handleSubmit} className="w-full space-y-4">
-        <input
-          type="email"
-          placeholder="email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="w-full py-2 px-4 bg-[#FFEDF6] text-[#4B1535] rounded-full font-['NanumGothic'] focus:outline-none focus:ring-2 focus:ring-[#CAC3E4]"
-        />
-        <input
-          type="text"
-          placeholder="username"
-          value={formData.username}
-          onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-          className="w-full py-2 px-4 bg-[#FFEDF6] text-[#4B1535] rounded-full font-['NanumGothic'] focus:outline-none focus:ring-2 focus:ring-[#CAC3E4]"
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          className="w-full py-2 px-4 bg-[#FFEDF6] text-[#4B1535] rounded-full font-['NanumGothic'] focus:outline-none focus:ring-2 focus:ring-[#CAC3E4]"
-        />
-        <button
-          type="submit"
-          className="w-full py-2 px-4 bg-[#FFEDF6] text-[#4B1535] rounded-full font-['NanumGothic'] hover:bg-[#CAC3E4] transition-colors"
-        >
-          submit
-        </button>
-      </form>
-    </AuthLayout>
+    <div className="starburst-container">
+      <div className="starburst"></div>
+      <div className="content">
+        <h2 className="title">please sign up</h2>
+        <form onSubmit={handleSubmit} className="signup-form">
+          <input
+            type="email"
+            placeholder="email"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="form-input"
+          />
+          <input
+            type="text"
+            placeholder="username"
+            value={formData.username}
+            onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+            className="form-input"
+          />
+          <input
+            type="password"
+            placeholder="password"
+            value={formData.password}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            className="form-input"
+          />
+          <button type="submit" className="submit-button">
+            submit
+          </button>
+          <button 
+            type="button"
+            onClick={() => navigate('/')} 
+            className="home-button"
+          >
+            home
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 
