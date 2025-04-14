@@ -62,7 +62,7 @@ userSchema.methods.comparePassword = async function(candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 
-// Create the model from the schema
-const User = mongoose.model('User', userSchema);
+// Check if the model already exists before defining it
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 module.exports = User; 

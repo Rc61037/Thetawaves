@@ -11,28 +11,32 @@ export default function Landing() {
   // Hook for programmatic navigation
   const router = useRouter();
 
+  // Render the landing page
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="starburst-container">
       {/* Background starburst effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 opacity-20 animate-pulse"></div>
+      <div className="starburst"></div>
       
       {/* Main content container */}
-      <div className="relative z-10 flex flex-col items-center justify-between h-[80vh] w-full max-w-4xl px-4">
+      <div className="content">
         {/* Sign up button - positioned at the top */}
         <button
           onClick={() => router.push('/signup')}
-          className="px-8 py-3 text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-700 transition-colors"
+          className="auth-button signup-button"
         >
           sign up
         </button>
 
         {/* Application logo */}
-        <h1 className="text-6xl font-bold text-white">Thetawaves</h1>
+        <h1 className="logo">Thetawaves</h1>
         
+        {/* Application subtitle */}
+        <p className="subtitle">create playlists or just listen to music</p>
+
         {/* Sign in button - positioned at the bottom */}
         <button
           onClick={() => router.push('/signin')}
-          className="px-8 py-3 text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-700 transition-colors"
+          className="auth-button signin-button"
         >
           sign in
         </button>

@@ -32,12 +32,16 @@ export default function SignIn() {
     
     try {
       console.log('Sending signin request with data:', formData);
-      // Send POST request to authentication endpoint
-      const response = await axios.post('http://localhost:5001/api/auth/signin', formData, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL; // Should be /api
+      if (!apiUrl) {
+        setError('API URL not configured. Please check environment variables.');
+        return;
+      }
+      // Send POST request to the relative API route
+      const response = await axios.post(`${apiUrl}/auth/signin`, formData, {
         headers: {
           'Content-Type': 'application/json',
-        },
-        withCredentials: true // Enable sending cookies with request
+        }
       });
       console.log('Signin response:', response.data);
       
@@ -69,24 +73,20 @@ export default function SignIn() {
 
   return (
     // Main container with starburst background effect
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 opacity-20 animate-pulse"></div>
-      <div className="relative z-10 w-full max-w-md p-8 bg-white/10 backdrop-blur-lg rounded-lg shadow-xl">
-        <h2 className="text-3xl font-bold text-white text-center mb-8">please sign in</h2>
+    <div className="starburst-container">
+      <div className="starburst"></div>
+      <div className="content">
+        <h2 className="title">please sign in</h2>
         {/* Display error message if present */}
-        {error && (
-          <p className="text-red-500 text-center mb-4 bg-red-100/10 p-2 rounded">
-            {error}
-          </p>
-        )}
+        {error && <p className="error-message">{error}</p>}
         {/* Sign-in form with controlled inputs */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="signup-form">
           <input
             type="text"
             placeholder="username"
             value={formData.username}
             onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-            className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="form-input"
             required
           />
           <input
@@ -94,21 +94,18 @@ export default function SignIn() {
             placeholder="password"
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="form-input"
             required
           />
           {/* Form submission button */}
-          <button 
-            type="submit" 
-            className="w-full px-8 py-3 text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-700 transition-colors"
-          >
+          <button type="submit" className="submit-button">
             submit
           </button>
           {/* Navigation button to return to home page */}
           <button 
             type="button"
             onClick={() => router.push('/')} 
-            className="w-full px-8 py-3 text-lg font-semibold text-white bg-transparent border border-white/20 rounded-full hover:bg-white/10 transition-colors"
+            className="home-button"
           >
             home
           </button>
