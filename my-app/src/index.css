@@ -264,3 +264,10 @@ button:focus-visible {
 .home-button:hover {
   background: rgba(255, 255, 255, 0.9);
 }
+
+.error-message {
+  color: #ff4444;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 14px;
+}
