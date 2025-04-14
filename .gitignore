@@ -1,23 +1,28 @@
 # Dependencies
-node_modules/
-**/node_modules/
+/my-app/node_modules
+/server/node_modules
 /.pnp
 .pnp.js
 
 # Testing
-/coverage
+/my-app/coverage
 
 # Production
-/build
-/dist
+/my-app/build
+/my-app/dist
+/server/dist
 
-# Misc
-.DS_Store
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Environment variables
+/my-app/.env
+/my-app/.env.local
+/my-app/.env.development.local
+/my-app/.env.test.local
+/my-app/.env.production.local
+/server/.env
+/server/.env.local
+/server/.env.development.local
+/server/.env.test.local
+/server/.env.production.local
 
 # Logs
 npm-debug.log*
@@ -28,4 +33,7 @@ yarn-error.log*
 .idea/
 .vscode/
 *.swp
-*.swo 
+*.swo
+
+# OS
+.DS_Store 
