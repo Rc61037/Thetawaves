@@ -2,9 +2,32 @@
 
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const MusicDashboard = () => {
   const router = useRouter();
+
+  const recentSongs = [
+    "Chic 'n' Stu",
+    "Innervision",
+    "Bubbles",
+    "Boom!",
+    "A.D.D. (American Dream Denial)",
+    "Mr.Jack",
+    "I-E-A-I-A-I-O",
+    "36"
+  ];
+
+  const trendingSongs = [
+    "Attack",
+    "Dreaming",
+    "Stealing Society",
+    "Tentative",
+    "U-Fig",
+    "Holy Mountains",
+    "Lonely Day",
+    "Soldier Side"
+  ];
 
   useEffect(() => {
     // Check if user is authenticated
@@ -53,10 +76,21 @@ const MusicDashboard = () => {
         <div className="mt-16">
           <h2 className="text-[#4B1535] text-2xl font-serif mb-6">recent playlists</h2>
           <div className="grid grid-cols-2 gap-x-48 gap-y-6">
-            {[...Array(8)].map((_, i) => (
-              <div key={i}>
-                <p className="text-[#4B1535] text-lg">song name</p>
-                <p className="text-[#4B1535] opacity-75">artist</p>
+            {recentSongs.map((song, i) => (
+              <div key={i} className="flex items-center space-x-4">
+                <div className="w-12 h-12 relative flex-shrink-0 rounded-full overflow-hidden">
+                  <Image
+                    src="/Steal_This_Album.jpg"
+                    alt="Steal This Album"
+                    width={48}
+                    height={48}
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="text-[#4B1535] text-lg">{song}</p>
+                  <p className="text-[#4B1535] opacity-75">System of a Down</p>
+                </div>
               </div>
             ))}
           </div>
@@ -67,10 +101,21 @@ const MusicDashboard = () => {
           <div className="bg-[#CAC3E4] p-4">
             <h2 className="text-[#4B1535] text-2xl font-serif mb-6">trending songs</h2>
             <div className="grid grid-cols-2 gap-x-48 gap-y-6">
-              {[...Array(8)].map((_, i) => (
-                <div key={i}>
-                  <p className="text-[#4B1535] text-lg">song name</p>
-                  <p className="text-[#4B1535] opacity-75">artist</p>
+              {trendingSongs.map((song, i) => (
+                <div key={i} className="flex items-center space-x-4">
+                  <div className="w-12 h-12 relative flex-shrink-0 rounded-full overflow-hidden">
+                    <Image
+                      src="/hypnotize.png"
+                      alt="Hypnotize"
+                      width={48}
+                      height={48}
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-[#4B1535] text-lg">{song}</p>
+                    <p className="text-[#4B1535] opacity-75">System of a Down</p>
+                  </div>
                 </div>
               ))}
             </div>
