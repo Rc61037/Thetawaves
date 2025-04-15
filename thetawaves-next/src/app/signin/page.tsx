@@ -109,6 +109,14 @@ export default function SignIn() {
           >
             home
           </button>
+          {/* Button to access non-auth page */}
+          <button 
+            type="button"
+            onClick={() => router.push('/nonauth')} 
+            className="submit-button mt-4"
+          >
+            continue without signing in
+          </button>
         </form>
       </div>
     </div>

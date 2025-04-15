@@ -1,8 +1,11 @@
 'use client';
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const NonAuth = () => {
-const trendingSongs = [
+  const router = useRouter();
+  
+  const trendingSongs = [
     "Attack",
     "Dreaming",
     "Stealing Society",
@@ -20,7 +23,7 @@ const trendingSongs = [
         <div className="w-full bg-[#9D86D5] py-4 flex justify-between items-center">
           <h1 className="text-[#4B1535] text-4xl font-serif px-8">THETAWAVES</h1>
           <button 
-            //onClick={alert('clicked')}
+            onClick={() => router.push('/signup')}
             className="submit-button px-8"
           >
             sign up
