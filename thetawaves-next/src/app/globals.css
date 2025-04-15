@@ -58,7 +58,7 @@ h1.logo {
   color: var(--dark-pink);
   font-size: 60px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -75,7 +75,7 @@ h1.logo {
   color: var(--dark-pink);
   font-size: 16px;
   position: absolute;
-  top: 58%;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -92,10 +92,11 @@ h1.logo {
   transform: translateX(-50%);
   width: 160px;
   background: rgba(255, 255, 255, 0.7);
+  box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
   color: var(--dark-pink);
-  border: none;
+  border: 2px solid #4B1535;
   border-radius: 25px;
-  padding: 10px 0;
+  padding: 10px 10px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s;
@@ -112,8 +113,13 @@ h1.logo {
 }
 
 .signin-button {
-  bottom: 25%;
+  bottom: 35%;
 }
+
+.continue-button {
+  bottom: 20%; 
+}
+
 
 /* Reset default button styles */
 button {
@@ -155,6 +161,7 @@ button {
 .form-input {
   width: 100%;
   background: rgba(255, 255, 255, 0.7);
+  box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
   border: none;
   border-radius: 25px;
   padding: 12px 20px;
@@ -175,8 +182,8 @@ button {
 
 .submit-button {
   background: rgba(255, 255, 255, 0.7);
+  box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
   color: var(--dark-pink);
-  border: none;
   border-radius: 25px;
   padding: 12px 40px;
   font-size: 16px;
@@ -191,8 +198,8 @@ button {
 
 .home-button {
   background: rgba(255, 255, 255, 0.7);
+  box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
   color: var(--dark-pink);
-  border: none;
   border-radius: 25px;
   padding: 8px 20px;
   font-size: 16px;
@@ -216,7 +223,7 @@ button {
 /* Override any conflicting button styles */
 .auth-button {
   background: rgba(255, 255, 255, 0.7) !important;
-  border: none !important;
+  /* border: none !important; */
   padding: 10px 0 !important;
   border-radius: 25px !important;
 }

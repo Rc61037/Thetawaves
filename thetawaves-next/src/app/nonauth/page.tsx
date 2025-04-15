@@ -1,10 +1,10 @@
-'use client';
+"use client";
 import React from "react";
 import { useRouter } from "next/navigation";
 
 const NonAuth = () => {
   const router = useRouter();
-  
+  {/*dummy song titles */}
   const trendingSongs = [
     "Attack",
     "Dreaming",
@@ -13,41 +13,54 @@ const NonAuth = () => {
     "U-Fig",
     "Holy Mountains",
     "Lonely Day",
-    "Soldier Side"
+    "Soldier Side",
   ];
- {/* Trending Songs */}
- return (
-    <div className="min-h-screen bg-[#FFEDF6] flex justify-center">
-      <div className="w-[1400px]">
-        {/* Header */}
-        <div className="w-full bg-[#9D86D5] py-4 flex justify-between items-center">
-          <h1 className="text-[#4B1535] text-4xl font-serif px-8">THETAWAVES</h1>
-          <button 
-            onClick={() => router.push('/signup')}
-            className="submit-button px-8"
-          >
-            sign up
-          </button>
-        </div>
-         {/* Search Bar */}
-         <div style={{ marginTop: '40px', marginBottom: '20px'}}>
+  
+  return (
+    <div className="min-h-screen bg-[#FFEDF6] flex flex-col w-full">
+      <div className="w-full bg-[#9D86D5] py-4 flex justify-between items-center border-color-[#4B1535] border-solid border-2">
+        {/*nav bar */}
+        <h1 className="text-[#4B1535] text-4xl font-serif px-8 ">THETAWAVES</h1>
+        {/*sign up button */}
+        <button
+          onClick={() => router.push("/signup")}
+          className="submit-button px-8 border-color-[#4B1535] border-solid border-2"
+        >
+          sign up
+        </button>
+      </div>
+
+      <div className="w-[1400px] ">
+        {/* Search Bar */}
+        <div style={{ marginTop: "40px", marginBottom: "20px" }}>
           <div className="w-full flex justify-center">
-            <div className="w-[700px] relative m-50">
+            <div className="w-[500px] relative">
               <input
                 type="text"
                 placeholder="search..."
-                style={{ backgroundColor: '#9D86D5'}}
-                className="form-input w-full pl-10 py-3 focus:outline-none focus:ring-0"
+                style={{
+                  backgroundColor: "#CAC3E4",
+                  border: "2px solid #4B1535",
+                  borderRadius: "56px",
+                  boxShadow: "rgba(85, 66, 136, 0.75) 5px 5px",
+                }}
+                className="form-input pl-2 py-3 focus:outline-none focus:ring-0 left-1/3"
               />
-             <span className="absolute left-6/10 transform translate-y-1/2 text-[#4B1535]">🔍</span>
+              <span className="absolute left-1/4 top-1/2 transform -translate-y-1/2 text-[#4B1535]">
+                🔍
+              </span>
             </div>
           </div>
         </div>
-
-        <div className="mt-8">
-          <div className="bg-[#CAC3E4] p-4 border-2  border-color:#4B1535">
-            <h2 className="text-[#4B1535] text-2xl font-serif mb-6">trending songs</h2>
-            <div className="grid grid-cols-2 gap-x-48 gap-y-6">
+        
+        {/*Trending songs */}
+        <div className="mx-auto w-full max-w-[1200px] p-[10px]">
+          <div className="bg-[#CAC3E4] p-4 border-2">
+            <h2 className="text-[#4B1535] text-2xl font-serif mb-6">
+              trending songs
+            </h2>
+            <div className="grid grid-cols-2 gap-x-48 gap-y-6 content-center">
+              {/*mapping songs */}
               {trendingSongs.map((song, i) => (
                 <div key={i} className="flex items-center space-x-4">
                   <div className="w-12 h-12 relative flex-shrink-0 rounded-full overflow-hidden">
@@ -61,15 +74,17 @@ const NonAuth = () => {
                   </div>
                   <div>
                     <p className="text-[#4B1535] text-lg">{song}</p>
-                    <p className="text-[#4B1535] opacity-75">System of a Down</p>
+                    <p className="text-[#4B1535] opacity-75">
+                      System of a Down
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        </div>
-        </div>
+      </div>
+    </div>
   );
 };
 

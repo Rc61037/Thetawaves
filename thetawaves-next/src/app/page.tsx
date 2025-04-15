@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 /**
  * Landing Component
@@ -16,12 +16,12 @@ export default function Landing() {
     <div className="starburst-container">
       {/* Background starburst effect */}
       <div className="starburst"></div>
-      
+
       {/* Main content container */}
       <div className="content">
         {/* Sign up button - positioned at the top */}
         <button
-          onClick={() => router.push('/signup')}
+          onClick={() => router.push("/signup")}
           className="auth-button signup-button"
         >
           sign up
@@ -29,16 +29,25 @@ export default function Landing() {
 
         {/* Application logo */}
         <h1 className="logo">Thetawaves</h1>
-        
-        {/* Application subtitle */}
-        <p className="subtitle">create playlists or just listen to music</p>
 
-        {/* Sign in button - positioned at the bottom */}
+        {/* Application subtitle */}
+        <p className="subtitle">
+          sign in and create playlists or just listen to music
+        </p>
+
+        {/* Sign in button*/}
         <button
-          onClick={() => router.push('/signin')}
+          onClick={() => router.push("/signin")}
           className="auth-button signin-button"
         >
           sign in
+        </button>
+        {/* button that routes the user to the non-authenticated view */}
+        <button
+          onClick={() => router.push("/nonauth")}
+          className="auth-button continue-button"
+        >
+          continue without signing in
         </button>
       </div>
     </div>
