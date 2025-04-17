@@ -17,24 +17,25 @@ const NonAuth = () => {
   ];
   
   return (
-    <div className="min-h-screen bg-[#FFEDF6] flex flex-col w-full">
+    <div className="min-h-screen bg-[#FFEDF6] flex flex-col min-w-full">
       <div className="w-full bg-[#9D86D5] py-4 flex justify-between items-center border-color-[#4B1535] border-solid border-2">
         {/*nav bar */}
         <h1 className="text-[#4B1535] text-4xl font-serif px-8 ">THETAWAVES</h1>
         {/*sign up button */}
         <button
           onClick={() => router.push("/signup")}
-          className="submit-button px-8 border-color-[#4B1535] border-solid border-2"
+          className="submit-button -[#4B1535] border-solid border-2]"
         >
           sign up
         </button>
       </div>
 
-      <div className="w-[1400px] ">
+      <div className=" min-h-screen ">
         {/* Search Bar */}
         <div style={{ marginTop: "40px", marginBottom: "20px" }}>
           <div className="w-full flex justify-center">
-            <div className="w-[500px] relative">
+            {/* <div className="w-[500px] relative"> */}
+            <div className="w-[50%] relative max-w-full">
               <input
                 type="text"
                 placeholder="search..."
@@ -54,7 +55,7 @@ const NonAuth = () => {
         </div>
         
         {/*Trending songs */}
-        <div className="mx-auto w-full max-w-[1200px] p-[10px]">
+        <div className="min-h-screen mx-auto w-full">
           <div className="bg-[#CAC3E4] p-4 border-2">
             <h2 className="text-[#4B1535] text-2xl font-serif mb-6">
               trending songs

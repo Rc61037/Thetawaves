@@ -52,7 +52,7 @@ const MusicDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFEDF6] flex flex-col w-full">
+    <div className="min-h-screen bg-[#FFEDF6] flex flex-col min-w-full">
       <div className="w-full bg-[#9D86D5] py-4 flex justify-between items-center border-color-[#4B1535] border-solid border-2">
         {/* nav bar */}
         <h1 className="text-[#4B1535] text-4xl font-serif px-8 ">THETAWAVES</h1>
@@ -81,7 +81,8 @@ const MusicDashboard = () => {
               backgroundColor: "#CAC3E4",
               border: "2px solid #4B1535",
               borderRadius: "56px",
-              width: "500px",
+              minWidth: "55%",
+              maxWidth: "75%",
               boxShadow: "rgba(85, 66, 136, 0.75) 5px 5px",
             }}
             value={newSong}
@@ -92,7 +93,7 @@ const MusicDashboard = () => {
           {/*submit button */}
           <button
             type="submit"
-            className="submit-button !bg-[#CAC3E4] text-[#4B1535] px-6 py-2 w-[150px] h-[50px] border-2 border-[#4B1535] rounded m-[10px]"
+            className="submit-button !bg-[#CAC3E4] text-[#4B1535] px-6 py-2 w-[50%] h-[50px] border-2 border-[#4B1535] rounded m-[10px] max-w-full"
           >
             Add
           </button>

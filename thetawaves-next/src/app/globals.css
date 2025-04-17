@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Chango&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --light-pink: #FFEDF6;
-  --dark-pink: #4B1535;
-  --medium-purple: #9D86D5;
-  --grey-purple: #CAC3E4;
+  --light-pink: #ffedf6;
+  --dark-pink: #4b1535;
+  --medium-purple: #9d86d5;
+  --grey-purple: #cac3e4;
   --shadow-purple: #554288;
-  --shadow-pink: #D183A9;
+  --shadow-pink: #d183a9;
   --foreground-rgb: 77, 21, 53;
   --background-start-rgb: 255, 237, 246;
   --background-end-rgb: 255, 237, 246;
@@ -20,7 +20,7 @@
 body {
   margin: 0;
   background: var(--light-pink);
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url('/soundwave.png');
+  background-image: url("/soundwave.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -54,7 +54,7 @@ body {
 }
 
 h1.logo {
-  font-family: 'Chango', cursive;
+  font-family: "Chango", cursive;
   color: var(--dark-pink);
   font-size: 60px;
   position: absolute;
@@ -94,7 +94,7 @@ h1.logo {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
   color: var(--dark-pink);
-  border: 2px solid #4B1535;
+  border: 2px solid #4b1535;
   border-radius: 25px;
   padding: 10px 10px;
   font-size: 16px;
@@ -117,9 +117,8 @@ h1.logo {
 }
 
 .continue-button {
-  bottom: 20%; 
+  bottom: 20%;
 }
-
 
 /* Reset default button styles */
 button {
@@ -244,4 +243,16 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
+}
+
+.mobile-signup-button {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
+  color: var(--dark-pink);
+  border-radius: 15px;
+  padding: 8px 30px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 5px;
 }
