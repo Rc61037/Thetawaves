@@ -6,7 +6,7 @@ export default function Navbar() {
   const { data: session } = useSession()
 
   const handleSignOut = async () => {
-    await signOut({ callbackUrl: '/signin' }) // redirect to sign-in page after sign out
+    await signOut({ callbackUrl: '/signin' }) 
   }
 
   return (
@@ -28,5 +28,4 @@ export default function Navbar() {
     </nav>
   )
 }
-
 
