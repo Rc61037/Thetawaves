@@ -110,6 +110,7 @@ useEffect(() => {
   
   return (
     <div className="min-h-screen bg-[#FFEDF6] flex flex-col min-w-full">
+      <Navbar />
       return (
     <div className="w-full bg-[#9D86D5] py-4 flex justify-between items-center border-color-[#4B1535] border-solid border-2">
       {  }
