@@ -7,16 +7,20 @@ import Image from "next/image";
 const MusicDashboard = () => {
   const router = useRouter();
 
-  const trendingSongs = [
-    "Attack",
-    "Dreaming",
-    "Stealing Society",
-    "Tentative",
-    "U-Fig",
-    "Holy Mountains",
-    "Lonely Day",
-    "Soldier Side",
-  ];
+  const [trendingSongs, setTrendingSongs] = React.useState<string[]>([]);
+
+useEffect(() => {
+  const fetchFeatured = async () => {
+    const res = await fetch("/api/spotify/search?query=featured");
+    const data = await res.json();
+    if (Array.isArray(data)) {
+      setTrendingSongs(data.map((item) => item.name));
+    }
+  };
+
+  fetchFeatured();
+}, []);
+
 
   const [recentSongs, setRecentSongs] = React.useState([
     "Chic 'n' Stu",
@@ -31,18 +35,68 @@ const MusicDashboard = () => {
 
   const [newSong, setNewSong] = React.useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setRecentSongs([...recentSongs, newSong]);
-    setNewSong("");
+  
+    const res = await fetch("/api/songs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ song: newSong }),
+    });
+  
+    if (res.ok) {
+      setRecentSongs((prev) => [...prev, newSong]);
+      setNewSong("");
+    }
+  };
+
+  const updateSong = async (index, updatedName) => {
+    const res = await fetch("/api/songs", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ index, newSong: updatedName }),
+    });
+  
+    if (res.ok) {
+      const updated = [...recentSongs];
+      updated[index] = updatedName;
+      setRecentSongs(updated);
+    }
+  };
+
+  const deleteSong = async (index) => {
+    const res = await fetch("/api/songs", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ index }),
+    });
+  
+    if (res.ok) {
+      const updated = recentSongs.filter((_, i) => i !== index);
+      setRecentSongs(updated);
+    }
   };
 
   useEffect(() => {
-  // Check if user is authenticated
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
-      router.push('/signin');
+      router.push("/signin");
+      return;
     }
+  
+    const fetchSongs = async () => {
+      const res = await fetch("/api/songs");
+      const data = await res.json();
+      setRecentSongs(data);
+    };
+  
+    fetchSongs();
   }, [router]);
 
   const handleLogout = () => {
@@ -56,6 +110,7 @@ const MusicDashboard = () => {
       <div className="w-full bg-[#9D86D5] py-4 flex justify-between items-center border-color-[#4B1535] border-solid border-2">
         {/* nav bar */}
         <h1 className="text-[#4B1535] text-4xl font-serif px-8 ">THETAWAVES</h1>
+        <button onClick={() => deleteSong(i)}>Delete</button>
         {/*sign out button */}
         <button
           onClick={() => router.push("/signup")}

@@ -12,7 +12,9 @@ import axios from 'axios';
 export default function SignIn() {
   // Hook for programmatic navigation
   const router = useRouter();
-  
+  //might not be needed
+  const NEXT_PUBLIC_API_URL =
+  "https://accounts.spotify.com/authorize?client_id=6e5f5b133148423aac3313fd99f1497c&response_type=code&redirect_uri=http://192.168.1.2:3000/signin&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
   // State management for form data (username and password)
   const [formData, setFormData] = useState({
     username: '',
