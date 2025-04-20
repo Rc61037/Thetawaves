@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: "Create playlists or just listen to music",
 };
 
+// app/layout.tsx
+import Navbar from '@ ?'; 
+
 export default function RootLayout({
   children,
 }: {
@@ -18,7 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-black text-white`}>
-        {children}
+        <Navbar />  
+        {
+          
+        }
+        {children}  
+        {
+          
+        }
       </body>
     </html>
   );
