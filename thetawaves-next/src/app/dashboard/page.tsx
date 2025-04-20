@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Navbar from "@/app/navbar.tsx";
 
 const MusicDashboard = () => {
   const router = useRouter();
@@ -107,8 +108,6 @@ useEffect(() => {
     router.push('/signin');
   };
   
-
-
   return (
     <div className="min-h-screen bg-[#FFEDF6] flex flex-col min-w-full">
       return (
