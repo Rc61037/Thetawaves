@@ -8,6 +8,8 @@ const MusicDashboard = () => {
   const router = useRouter();
 
   const [trendingSongs, setTrendingSongs] = React.useState<string[]>([]);
+  const username = localStorage.getItem("user");
+
 
 useEffect(() => {
   const fetchFeatured = async () => {
@@ -104,21 +106,27 @@ useEffect(() => {
     localStorage.removeItem('user');
     router.push('/signin');
   };
+  
+
 
   return (
     <div className="min-h-screen bg-[#FFEDF6] flex flex-col min-w-full">
-      <div className="w-full bg-[#9D86D5] py-4 flex justify-between items-center border-color-[#4B1535] border-solid border-2">
-        {/* nav bar */}
-        <h1 className="text-[#4B1535] text-4xl font-serif px-8 ">THETAWAVES</h1>
-        <button onClick={() => deleteSong(i)}>Delete</button>
-        {/*sign out button */}
-        <button
-          onClick={() => router.push("/signup")}
-          className="submit-button px-8 border-color-[#4B1535] border-solid border-2"
-        >
-          sign out
-        </button>
-      </div>
+      return (
+    <div className="w-full bg-[#9D86D5] py-4 flex justify-between items-center border-color-[#4B1535] border-solid border-2">
+      {  }
+      <h1 className="text-[#4B1535] text-4xl font-serif px-8 ">THETAWAVES</h1>
+      {  }
+      {username && <div className="welcome text-lg text-[#4B1535]">Welcome, {username}!</div>}
+      {  }
+      <button
+        onClick={handleLogout} 
+        className="submit-button px-8 border-color-[#4B1535] border-solid border-2"
+      >
+        Sign out
+      </button>
+    </div>
+  );
+};
       {/*form that lets users add a song */}
       <div className="mt-12 px-8">
         <h2 className="relative text-[#4B1535] text-2xl text-center font-serif">
