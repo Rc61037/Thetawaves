@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "react-spotify-web-playback-sdk": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9"
+  }
+}

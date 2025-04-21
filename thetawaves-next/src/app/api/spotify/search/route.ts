@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { fetchFeaturedPlaylists } from '@/services/spotify';
+import { searchTracks } from '@/services/spotify';
 
 //replace trending dummy songs with featured songs upon initially loading 
 export async function GET(req: Request) {
@@ -11,8 +11,8 @@ export async function GET(req: Request) {
   }
 
   try {
-    const data = await fetchFeaturedPlaylists();
-    return NextResponse.json(data);
+    const tracks = await searchTracks(query);
+    return NextResponse.json(tracks);
   } catch (err) {
     console.error(err);
     return NextResponse.json({ error: 'Spotify API error' }, { status: 500 });

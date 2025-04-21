@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
+import { Track } from '@/types/spotify';
 
-let songs: string[] = []; 
+let songs: Track[] = [];
 
 export async function GET() {
   return NextResponse.json(songs);
@@ -8,7 +9,7 @@ export async function GET() {
 
 export async function POST(req: Request) {
   const body = await req.json();
-  songs.push(body.song);
+  songs.unshift(body.track);
   return NextResponse.json({ success: true });
 }
 
