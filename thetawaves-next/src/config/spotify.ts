@@ -1,8 +1,23 @@
-// Your Spotify Premium access token
-export const SPOTIFY_ACCESS_TOKEN = 'BQAmIOJYQ8mdyEzkL0ppvvtY671rizXevpY_oKPd4bzVH3GImXC3ziLdlRYfW00xiVAcaTw09ubgxy1xPndsHnPI7L81a3BQ02zot3kNZLvDiQivxCAfzz9s-h8_fVC6RBSh4ixfdyGB2AM-vzNuyAyQy4l89g-gj1wWA3lQW47qjHT_4rkLy62Mt1oLt65MY7ilySMcDVPjRufanlQjQip9LoWaEeutU6MAI_6wP6-RwM5cdcsQ1eOLfcKC3AKIW0HMqEodn-eHIopUFlau6OjVbvlc_pklnIyQz_06NDv4JYSucFWXjkki16DPksNGGiYXEtB417vP0iPhH63mVOyVGy0cCsVpBGs4ZOhBQwOIMSUC8E8gFB8JSPA';
-
 // Spotify API Configuration
 export const SPOTIFY_CONFIG = {
   clientId: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
   clientSecret: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET,
+  redirectUri: encodeURIComponent('http://127.0.0.1:3000/callback'),
+  scopes: [
+    'user-read-playback-state',
+    'user-modify-playback-state',
+    'user-read-currently-playing',
+    'streaming',
+    'user-read-email',
+    'user-read-private',
+    'user-read-recently-played',
+    'user-top-read'
+  ].join(' ')
+};
+
+// Spotify API endpoints
+export const SPOTIFY_ENDPOINTS = {
+  auth: 'https://accounts.spotify.com/authorize',
+  token: 'https://accounts.spotify.com/api/token',
+  api: 'https://api.spotify.com/v1',
 }; 

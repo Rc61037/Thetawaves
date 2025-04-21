@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
-import User from '@/models/User';
+import User, { IUser } from '@/models/User';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { SignUpRequest, AuthResponse, ErrorResponse, IUser } from '@/types/auth';
-import { Error as MongooseError } from 'mongoose';
+import { SignUpRequest, AuthResponse, ErrorResponse } from '@/types/auth';
+import { Error as MongooseError, Types } from 'mongoose';
 
 export async function POST(request: NextRequest): Promise<NextResponse<AuthResponse | ErrorResponse>> {
   try {
@@ -31,26 +32,39 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
 
     // Create new user (password hashing handled by Mongoose pre-save hook)
     const newUser = new User({ email, username, password });
-    const user = await newUser.save() as IUser;
+    const user = await newUser.save() as IUser & { _id: Types.ObjectId };
 
     // Generate JWT token
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: user._id.toString() },
       process.env.JWT_SECRET as string,
-      { expiresIn: '24h' }
+      { expiresIn: '7d' }
     );
 
-    // Return success response
-    return NextResponse.json<AuthResponse>({
-      message: 'User created successfully',
-      token,
-      user: {
-        id: user._id.toString(),
-        email: user.email,
-        username: user.username
-      }
-    }, { status: 201 });
+    // Create response with user data (excluding password)
+    const userResponse = {
+      id: user._id.toString(),
+      email: user.email,
+      username: user.username,
+    };
 
+    // Set cookie with token
+    const response = NextResponse.json<AuthResponse>(
+      { 
+        message: 'User created successfully',
+        user: userResponse, 
+        token 
+      },
+      { status: 201 }
+    );
+    response.cookies.set('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 7 * 24 * 60 * 60, // 7 days
+    });
+
+    return response;
   } catch (error) {
     console.error('Signup API Error:', error);
     // Distinguish between validation errors and others

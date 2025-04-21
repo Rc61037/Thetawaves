@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
-import User from '@/models/User';
+import User, { IUser } from '@/models/User';
 import jwt from 'jsonwebtoken';
-import { SignInRequest, AuthResponse, ErrorResponse, IUser } from '@/types/auth';
+import { SignInRequest, AuthResponse, ErrorResponse } from '@/types/auth';
+import { Types } from 'mongoose';
 
 export async function POST(request: NextRequest): Promise<NextResponse<AuthResponse | ErrorResponse>> {
   try {
@@ -20,7 +21,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
     }
 
     // Find user
-    const user = await User.findOne({ username }) as IUser | null;
+    const user = await User.findOne({ username }) as (IUser & { _id: Types.ObjectId }) | null;
     if (!user) {
       console.log(`Signin attempt failed: User not found for username '${username}'`);
       return NextResponse.json<ErrorResponse>(
@@ -41,26 +42,39 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
 
     // Generate JWT token
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: user._id.toString() },
       process.env.JWT_SECRET as string,
-      { expiresIn: '24h' }
+      { expiresIn: '7d' }
     );
 
-    // Return success response
-    return NextResponse.json<AuthResponse>({
-      message: 'Logged in successfully',
-      token,
-      user: {
-        id: user._id.toString(),
-        email: user.email,
-        username: user.username
-      }
-    }, { status: 200 });
+    // Create response with user data (excluding password)
+    const userResponse = {
+      id: user._id.toString(),
+      email: user.email,
+      username: user.username,
+    };
 
+    // Set cookie with token
+    const response = NextResponse.json<AuthResponse>(
+      { 
+        message: 'Login successful',
+        user: userResponse, 
+        token 
+      },
+      { status: 200 }
+    );
+    response.cookies.set('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 7 * 24 * 60 * 60, // 7 days
+    });
+
+    return response;
   } catch (error) {
     console.error('Signin API Error:', error);
     return NextResponse.json<ErrorResponse>(
-      { message: 'Error logging in', error: (error as Error).message },
+      { message: 'Error during signin', error: (error as Error).message },
       { status: 500 }
     );
   }

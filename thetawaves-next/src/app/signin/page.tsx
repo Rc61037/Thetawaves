@@ -47,12 +47,21 @@ export default function SignIn() {
       });
       console.log('Signin response:', response.data);
       
-      // Store authentication data in localStorage for persistent session
+      // Store authentication data in localStorage for client-side access
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
       
-      // Redirect to dashboard upon successful authentication
-      router.push('/dashboard');
+      // Store token in a cookie for server-side middleware access
+      // Cookies are accessible to middleware, while localStorage is not
+      // This allows our middleware to verify authentication status on each request
+      document.cookie = `token=${response.data.token}; path=/; max-age=86400; SameSite=Lax`;
+      
+      // Check if there's a redirect URL in the query parameters
+      const params = new URLSearchParams(window.location.search);
+      const redirectTo = params.get('from') || '/dashboard';
+      
+      // Redirect to the original page or dashboard
+      router.push(redirectTo);
     } catch (error: any) {
       // Comprehensive error handling with detailed logging
       console.error('Signin error:', error);
