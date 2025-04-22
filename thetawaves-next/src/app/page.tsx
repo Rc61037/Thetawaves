@@ -14,9 +14,10 @@ export default function Landing() {
   // Render the landing page
   return (
     <div className="starburst-container">
+      
       {/* Background starburst effect */}
       <div className="starburst"></div>
-
+    
       {/* Main content container */}
       <div className="content">
         {/* Sign up button - positioned at the top */}

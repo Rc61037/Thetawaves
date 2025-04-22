@@ -1210,7 +1210,7 @@ const DashboardContent = ({ onTrackChange }: { onTrackChange: (track: Track | nu
                   >
                     <button
                       onClick={() => handlePlay(track)}
-                      className={`flex items-center justify-center w-8 h-8 rounded-full border-2 transition-colors ${
+                     className={`track-button transition-colors${
                         currentlyPlaying === track.uri
                           ? 'bg-[#4B1535] text-[#CAC3E4] border-[#CAC3E4]'
                           : 'bg-[#CAC3E4] text-[#4B1535] border-[#4B1535] hover:bg-[#BFB3DC]'
@@ -1220,7 +1220,7 @@ const DashboardContent = ({ onTrackChange }: { onTrackChange: (track: Track | nu
                     </button>
                     <button
                       onClick={() => addSongToRecent(track)}
-                      className="bg-[#CAC3E4] text-[#4B1535] px-4 py-1 rounded-full border-2 border-[#4B1535] hover:bg-[#BFB3DC] transition-colors"
+                      className="add-button transition-colors"
                     >
                       Add
                     </button>
@@ -1264,7 +1264,7 @@ const DashboardContent = ({ onTrackChange }: { onTrackChange: (track: Track | nu
                     >
                       <button
                         onClick={() => handlePlay(track)}
-                        className={`flex items-center justify-center w-8 h-8 rounded-full border-2 transition-colors ${
+                       className={`track-button transition colors${
                           currentlyPlaying === track.id
                             ? 'bg-[#4B1535] text-[#CAC3E4] border-[#CAC3E4]'
                             : 'bg-[#CAC3E4] text-[#4B1535] border-[#4B1535] hover:bg-[#BFB3DC]'
@@ -1274,7 +1274,7 @@ const DashboardContent = ({ onTrackChange }: { onTrackChange: (track: Track | nu
                       </button>
                       <button
                         onClick={() => deleteSong(i)}
-                        className="bg-[#CAC3E4] text-[#4B1535] px-4 py-1 rounded-full border-2 border-[#4B1535] hover:bg-[#BFB3DC] transition-colors"
+                        className="delete-button transition-colors" 
                       >
                         Delete
                       </button>
@@ -1328,8 +1328,8 @@ const DashboardContent = ({ onTrackChange }: { onTrackChange: (track: Track | nu
                           <div className="flex flex-wrap gap-1 justify-center">
                             <button
                               onClick={() => handlePlay(track)}
-                              className={`flex items-center justify-center w-7 h-7 rounded-full border-2 transition-colors ${
-                                currentlyPlaying === track.uri
+                             className={`track-button transition-colors ${  
+                             currentlyPlaying === track.uri
                                   ? 'bg-[#4B1535] text-[#CAC3E4] border-[#CAC3E4]'
                                   : 'bg-[#CAC3E4] text-[#4B1535] border-[#4B1535] hover:bg-[#BFB3DC]'
                               }`}
@@ -1338,7 +1338,7 @@ const DashboardContent = ({ onTrackChange }: { onTrackChange: (track: Track | nu
                             </button>
                             <button
                               onClick={() => addSongToRecent(track)}
-                              className="bg-[#CAC3E4] text-[#4B1535] px-2 py-1 rounded-full border-2 border-[#4B1535] hover:bg-[#BFB3DC] transition-colors text-sm"
+                              className="add-button transition-colors"
                             >
                               +
                             </button>

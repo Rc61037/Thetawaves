@@ -25,10 +25,12 @@ export const Card: React.FC<CardProps> = ({
   const baseClasses = 'flex items-center space-x-4 p-4 rounded-lg transition-colors';
   const activeClasses = isActive ? 'bg-[#BFB3DC]' : 'bg-[#CAC3E4] hover:bg-[#BFB3DC]';
   const borderClasses = 'border-2 border-[#4B1535]';
+  const trackBorderClasses = 'border-t-2 border-[#4B1535]';
+
   
   return (
     <div 
-      className={`${baseClasses} ${activeClasses} ${borderClasses} ${className}`}
+      className={`${baseClasses} ${activeClasses} ${trackBorderClasses} ${className}`}
       onClick={onClick}
       style={{ cursor: onClick ? 'pointer' : 'default' }}
     >

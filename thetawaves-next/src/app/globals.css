@@ -256,3 +256,63 @@ button {
   transition: background 0.2s;
   margin-top: 5px;
 }
+
+.track-button {
+  box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
+  color: var(--dark-pink);
+  border: 2px solid #4B1535;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+  left: 85%;
+  position: static;
+  background-color: #CAC3E4;
+}
+
+.delete-button {
+  box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
+  color: var(--dark-pink);
+  border: 2px solid #4B1535;
+  border-radius: 25px;
+  padding: 8px 38px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+  left: 90%;
+  position: static;
+  background-color: #CAC3E4;
+}
+
+.handlePlay-button {
+  box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
+  color: var(--dark-pink);
+  border: 2px solid #4B1535;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+  right: 100px;
+  position: static;
+  background-color: #CAC3E4;
+}
+
+.add-button {
+  box-shadow: rgba(85, 66, 136, 0.75) 5px 5px;
+  color: var(--dark-pink);
+  border: 2px solid #4B1535;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+  right: 30px;
+  position: static;
+  background-color: #CAC3E4;
+}

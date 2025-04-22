@@ -164,7 +164,7 @@ const SpotifyPlayer: React.FC<SpotifyPlayerProps> = ({ currentTrack, onTrackEnd 
                 onClick={handleNext}
                 disabled={isLoading}
                 className="bg-[#CAC3E4] text-[#4B1535] w-8 h-8 rounded-full border-2 border-[#4B1535] hover:bg-[#BFB3DC] transition-colors flex items-center justify-center disabled:opacity-50"
-              >
+             >
                 ⏭
               </button>
             </div>
